@@ -3,6 +3,14 @@ package Colecciones;
 import java.util.Set; //papa
 import java.util.HashSet; //hijo
 
+import java.util.ArrayList; 
+import java.util.List;
+
+import java.util.Map; 
+import java.util.HashMap;
+
+
+
 
 public class Colecciones {
 
@@ -48,27 +56,125 @@ public class Colecciones {
 		//En caso de querer usar un for each para imprimir los elementos, solo se imprimiran 7 elementos. (Solo itera sobre los elementos existentes).
 		for(String habitacionTemporal : habitaciones) {
 			System.out.println(habitacionTemporal);
+		} //for
+		
+		//ArrayList para una lista de contactos
+		
+		//Uso la interface List que almacena Contactos (objeto), se llama listaDeContactos e instancia un arrayList para manejar los mismos tipos de datos (Contacto)
+		List<Cliente> listaDeClientes = new ArrayList<>();
+		
+		//Primero instancio un objeto de la clase Cliente (nombre, cuenta, saldo, nip)
+		Cliente Felipe = new Cliente("Felipe Maqueda", "ABC123", 150.50f, "1234");
+		
+		//Agrego el cliente a mi lista de clientes con el metodo .add
+		listaDeClientes.add(Felipe);
+		
+		//Instancio al cliente y lo agrego a la lista (Agregarlo en una sola linea)
+		listaDeClientes.add(new Cliente("Naruto", "XXX111", 100.00f, "0000"));
+		
+		
+		System.out.println("Lista completa");
+		//Imprimo la informacion de mi lista (utilizar metodos)
+		for (Cliente cliente : listaDeClientes) {
+		    System.out.println(cliente);
 		}
 		
+		System.out.println();
+		//Sacar un elemento de la lista y asignarlo a una variable
+		System.out.println("Elemento en el indice 0");
+		Cliente datoDeLaLista = listaDeClientes.get(0);
 		
+		System.out.println();
+		//Imprimir el elemento de la lista con un dato especifico
+		System.out.println("Impresion de un elemento de la lista");
+		System.out.println(datoDeLaLista.getCuentaBancaria());
+		
+		System.out.println();
+		//Eliminar elementos de la lista
+		listaDeClientes.remove(0);
+		
+		System.out.println();
+		//Imprimo la informacion de mi lista (utilizar metodos)
+		System.out.println(listaDeClientes);
+		
+		//Conjunto para servicios de un hotel
+		Set<String> roomService = new HashSet<>();
+		
+		roomService.add("Chilaquiles");
+		roomService.add("Agua mineral");
+		roomService.add("Wi-fi");
+		
+		//Hotel con promocion (si pidieron mineral aplicamos un descuento del 50%)
+		if(roomService.contains("Agua mineral")) { //tiene que respetar el texto
+			System.out.println("Obtienes un descuento del 50%");
+		}
+		
+		//Que pasa si imprimio mi roomService?
+		//roomService.clear();
+		System.out.println(roomService);
+		
+		//HashMap para mi sistema de reservas del hotel
+		// llave     valor
+		Map<String, Cliente> reservaHabitacion = new HashMap<>();
+		
+		reservaHabitacion.put("101", new Cliente("Jesus", "135JJJ", 1890.87f, "0011") );
+		reservaHabitacion.put("102", new Cliente("Bugs Bunny", "BGSB12", 10890.87f, "7777") );
+		
+		//Impresion de una reserva
+		Cliente reservaBugsBunny = reservaHabitacion.get("102"); //obtener un dato del hashmap (key)
+		
+		//Que pasa si imprimo la variable reservaHabitacion
+		
+		
+		
+		
+	
 
-	}
+	} //main
 
-}
+} //colecciones
 
 
 /*
 
 Colecciones
 
--Arrays
+- Arrays
 
 Un array es una estructura de datos linea que contiene elementos del mismo tipo. La longitud de un array se establece al momento de crearlo y no puede cambiar. No cuenta con metodos adicionales para agregar o eliminar elementos. Los elementos estan almacenados de forma contigua en memoria, y se puede acceder a ellos a traves de un indice. Sus principales caracteristicas son:
 
 	1. Tamanio fijo.
 	2. Acceso rapido
 	3. Coste elevado para insertar o eliminar elementos. 
+	
+	
+	
+- ArrayList	
 
+Es una implementacion de una coleccion llamada List (interface superior), y se utiliza mucho para almacenar elementos de una forma dinamica. Las principales caracteristicas de una ArrayList son: 
+
+	1. Tamanio dinamico (se puede instanciar, agregar al arreglo)
+	2. Acceso rapido 
+	3. Coste elevado para insertar o eliminar elementos. 
+	
+
+- Set
+Es una estructura de datos que almacena elementos unicos sin orden especifico. Las principales caracteristicas de un set son:
+
+	1.No hay elementos duplicados
+	2.No hay orden especifico
+	3.Busqueda es mas rapida (key-value)
+	
+- HashMap
+
+Es una implementacio de la interfaz Map de Java, que permite que la informacion se almacene en pares clave-valor. Sus principales caracteristicas son:
+
+	1.Almacenamiento K y V
+	2.Sin orden especifico
+	3.Busqueda rapida
+	4.Iteracion rapida (for each)
+	5.No sincronizado (hilos)
+	
 
 */
 
